@@ -12,7 +12,7 @@ g = Github(github_token)
 repo = g.get_repo(repo_name)
 
 issues = repo.get_issues(state='open')
-issue = next(issues, None)
+issue = next(iter(issues), None)
 
 if issue:
     prompt = f"""
