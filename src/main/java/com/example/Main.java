@@ -11,7 +11,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         Label label = new Label("Hello JavaFX");
         Scene scene = new Scene(label, 400, 200);
-D
         primaryStage.setTitle("JavaFX Sample");
         primaryStage.setScene(scene);
         primaryStage.show();
