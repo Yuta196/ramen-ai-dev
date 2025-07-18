@@ -1,6 +1,8 @@
-"java.project.sourcePaths": [
-  "src/main/java"
-],
-"java.project.referencedLibraries": [
-  "C:/javafx-sdk-17.0.16/lib/*.jar"
-]
+{
+  "java.project.sourcePaths": [
+    "src/main/java"
+  ],
+  "java.project.referencedLibraries": [
+    "C:/javafx-sdk-17.0.16/lib/*.jar"
+  ]
+}
