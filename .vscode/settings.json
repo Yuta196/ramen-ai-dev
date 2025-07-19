@@ -3,6 +3,7 @@
     "src/main/java"
   ],
   "java.project.referencedLibraries": [
-    "C:/javafx-sdk-17.0.16/lib/*.jar"
+    "C:/Users/USER/javafx-sdk-17.0.16/lib/*.jar",
+    "C:/Users/USER/tomcat/9/lib/servlet-api.jar"
   ]
 }
