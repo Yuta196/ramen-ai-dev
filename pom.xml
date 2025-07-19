@@ -23,6 +23,7 @@
           <warSourceDirectory>src/main/webapp</warSourceDirectory>
         </configuration>
       </plugin>
+<<<<<<< HEAD
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -45,3 +46,8 @@
     </dependency>
   </dependencies>
 </project>
+=======
+    </plugins>
+  </build>
+</project>
+>>>>>>> 96ea3ae9eb716fa9bcc3d7b2a3fea7e29bd7177b
