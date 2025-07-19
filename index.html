@@ -34,13 +34,60 @@
                 <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="ラーメンの写真" class="ramen-img">
                 <p>このサイトは、ラーメン好きのための情報発信サイトです。<br>
                 おすすめのラーメン店や、AIによるラーメン診断など、さまざまなコンテンツを今後追加予定です！</p>
+                <hr>
+                <h3>あなたの好みでおすすめラーメンを検索</h3>
+                <form id="ramen-form">
+                    <label>味：
+                        <select name="taste">
+                            <option value="">選択してください</option>
+                            <option value="醤油">醤油</option>
+                            <option value="味噌">味噌</option>
+                            <option value="塩">塩</option>
+                            <option value="とんこつ">とんこつ</option>
+                        </select>
+                    </label>
+                    <label>スープ：
+                        <select name="soup">
+                            <option value="">選択してください</option>
+                            <option value="あっさり">あっさり</option>
+                            <option value="こってり">こってり</option>
+                        </select>
+                    </label>
+                    <label>辛さ：
+                        <select name="spicy">
+                            <option value="">選択してください</option>
+                            <option value="辛い">辛い</option>
+                            <option value="普通">普通</option>
+                            <option value="なし">なし</option>
+                        </select>
+                    </label>
+                    <button type="submit">おすすめを検索</button>
+                </form>
+                <div id="recommend-result" style="margin-top:1em;"></div>
             </section>
         </main>
         <footer>
             &copy; 2025 ラーメンAI
         </footer>
     </div>
-    <!-- 店舗詳細ページへの遷移に変更したため、スクリプトは不要です -->
+    <script>
+    document.getElementById('ramen-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const data = new URLSearchParams();
+        data.append('taste', form.taste.value);
+        data.append('soup', form.soup.value);
+        data.append('spicy', form.spicy.value);
+        const res = await fetch('/api/recommend', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: data
+        });
+        const json = await res.json();
+        document.getElementById('recommend-result').innerHTML =
+            '<b>おすすめラーメン店:</b> ' + (json.recommend && json.recommend.length > 0 ? json.recommend : '該当なし');
+    });
+    </script>
 </body>
 </html>
 
