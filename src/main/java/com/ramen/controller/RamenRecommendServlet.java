@@ -18,7 +18,15 @@ public class RamenRecommendServlet extends HttpServlet {
         RamenShopDao dao = new RamenShopDao();
         String action = request.getServletPath();
         if ("/recommend".equals(action)) {
-            List<RamenShop> shopList = dao.findAll();
+            String name = request.getParameter("name");
+            String address = request.getParameter("address");
+            String description = request.getParameter("description");
+            List<RamenShop> shopList;
+            if ((name != null && !name.isEmpty()) || (address != null && !address.isEmpty()) || (description != null && !description.isEmpty())) {
+                shopList = dao.findByKeyword(name, address, description);
+            } else {
+                shopList = dao.findAll();
+            }
             request.setAttribute("shopList", shopList);
             request.getRequestDispatcher("/recommend.jsp").forward(request, response);
         } else if ("/admin".equals(action)) {
