@@ -11,13 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/recommend")
+@WebServlet({"/recommend", "/admin"})
 public class RamenRecommendServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RamenShopDao dao = new RamenShopDao();
-        List<RamenShop> shopList = dao.findAll();
-        request.setAttribute("shopList", shopList);
-        request.getRequestDispatcher("/recommend.jsp").forward(request, response);
+        String action = request.getServletPath();
+        if ("/recommend".equals(action)) {
+            List<RamenShop> shopList = dao.findAll();
+            request.setAttribute("shopList", shopList);
+            request.getRequestDispatcher("/recommend.jsp").forward(request, response);
+        } else if ("/admin".equals(action)) {
+            List<RamenShop> shopList = dao.findAll();
+            request.setAttribute("shopList", shopList);
+            request.getRequestDispatcher("/admin.jsp").forward(request, response);
+        }
     }
 }
