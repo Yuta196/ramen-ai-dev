@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RamenShopDao {
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/ramen_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Tokyo";
-    private static final String DB_USER = "root"; // 必要に応じて変更
-    private static final String DB_PASS = "password";     // 必要に応じて変更
+private static final String JDBC_URL = "jdbc:mysql://192.168.2.201:3306/ramen_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Tokyo";
+private static final String DB_USER = "ramen_user"; // CentOS MariaDB用
+private static final String DB_PASS = "0213yutA";     // CentOS MariaDB用
 
     // 検索（店名・住所・特徴のいずれかにキーワードが含まれる場合）
     public List<RamenShop> findByKeyword(String name, String address, String description) {
